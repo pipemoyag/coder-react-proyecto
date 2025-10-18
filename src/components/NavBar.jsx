@@ -2,7 +2,7 @@ import CartWidget from "./CartWidget";
 
 const NavBar = ({ cartCount }) => {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark sticky-top px-2">
       <div className="container-fluid">
         {/* <!-- Logo --> */}
         <a className="navbar-brand" href="#">

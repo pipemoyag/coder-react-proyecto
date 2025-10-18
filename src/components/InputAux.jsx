@@ -10,13 +10,12 @@ const InputAux = ({ cartCount, setCartCount }) => {
 
   return (
     <div className="d-flex justify-content-center m-4">
-      <div className="input-group" style={{ maxWidth: "300px" }}>
+      <div className="input-group" style={{ maxWidth: "200px" }}>
         <input
           type="number"
           min="0"
           step="1"
           className="form-control border border-dark fs-3 text-center py-3"
-          placeholder="Cuántos productos llevas?"
           value={cartCount}
           onChange={handleChange}
         />
