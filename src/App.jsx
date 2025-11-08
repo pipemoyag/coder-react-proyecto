@@ -1,22 +1,20 @@
 import { useState } from "react";
 import "./App.css";
-import NavBar from "./components/NavBar";
+import NavBarContainer from "./components/NavBarContainer";
 import ItemListContainer from "./components/ItemListContainer";
 import InputAux from "./components/InputAux";
+import { BrowserRouter } from "react-router";
 
 function App() {
-  const [cartCount, setCartCount] = useState("0");
   return (
-    <>
-      <NavBar cartCount={cartCount} />
-      <ItemListContainer
-        text={
-          "¡Bienvenido a Cat Republic Petshop! El sitio se encuentra actualmente en construcción"
-        }
-      />
-      <ItemListContainer text={"¿Cuántos productos lleva en su carrito?"} />
-      <InputAux cartCount={cartCount} setCartCount={setCartCount} />
-    </>
+    <BrowserRouter>
+      <NavBarContainer />
+      {/* <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/item/:id" element={<ItemDetailContainer />} />
+        <Route path="/category/:categoryName" element={<ItemListContainer />} />
+      </Routes> */}
+    </BrowserRouter>
   );
 }
 

@@ -1,6 +1,8 @@
 import CartWidget from "./CartWidget";
+import { Link } from "react-router";
+import "./style/NavBar.css";
 
-const NavBar = ({ cartCount }) => {
+const NavBar = ({ categories }) => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark sticky-top px-2">
       <div className="container-fluid">
@@ -25,7 +27,7 @@ const NavBar = ({ cartCount }) => {
           </button>
 
           {/* <!-- Carrito vista mobile --> */}
-          <CartWidget cartCount={cartCount} />
+          <CartWidget cartCount={1} />
         </div>
 
         {/* <!-- Contenido colapsable --> */}
@@ -36,28 +38,36 @@ const NavBar = ({ cartCount }) => {
           <ul className="navbar-nav text-start text-sm-end">
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Alimentos
+                Inicio
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Snacks
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Categorías
               </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Juguetes
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Farmacia
-              </a>
+              <ul className="dropdown-menu mega-menu">
+                {categories.map((category, index) => (
+                  <li key={index} className="list-unstyled">
+                    <Link
+                      className="dropdown-item"
+                      to={`/category/${category}`}
+                    >
+                      {category}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </li>
 
             {/* <!-- Carrito vista desktop --> */}
             <li className="nav-item ms-3 d-none d-sm-block">
-              <CartWidget cartCount={cartCount} />
+              <CartWidget cartCount={1} />
             </li>
           </ul>
         </div>
