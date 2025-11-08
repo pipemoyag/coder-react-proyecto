@@ -1,19 +1,18 @@
-import { useState } from "react";
 import "./App.css";
 import NavBarContainer from "./components/NavBarContainer";
 import ItemListContainer from "./components/ItemListContainer";
-import InputAux from "./components/InputAux";
-import { BrowserRouter } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 function App() {
   return (
     <BrowserRouter>
       <NavBarContainer />
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<ItemListContainer />} />
-        <Route path="/item/:id" element={<ItemDetailContainer />} />
         <Route path="/category/:categoryName" element={<ItemListContainer />} />
-      </Routes> */}
+        {/* <Route path="/item/:id" element={<ItemDetailContainer />} /> */}
+      </Routes>
     </BrowserRouter>
   );
 }

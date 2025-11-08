@@ -7,9 +7,9 @@ const NavBar = ({ categories }) => {
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark sticky-top px-2">
       <div className="container-fluid">
         {/* <!-- Logo --> */}
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           Cat Republic Petshop
-        </a>
+        </Link>
 
         {/* <!-- Mobile: hamburguesa + carrito --> */}
         <div className="d-flex d-sm-none ms-auto align-items-center">
@@ -37,9 +37,9 @@ const NavBar = ({ categories }) => {
         >
           <ul className="navbar-nav text-start text-sm-end">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/">
                 Inicio
-              </a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <a
