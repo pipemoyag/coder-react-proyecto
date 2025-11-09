@@ -1,22 +1,24 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import ItemDetail from "./ItemDetail";
+import Loader from "./Loader";
+import { useFetch } from "../hooks/useFetch";
 
 function ItemDetailContainer() {
-  const [item, setItem] = useState({
+  const { id } = useParams();
+
+  const {
+    data: item,
+    loading,
+    error,
+  } = useFetch(`https://dummyjson.com/products/${id}`, {
     title: "",
     description: "",
     price: "",
   });
-  const { id } = useParams();
 
-  useEffect(() => {
-    fetch(`https://dummyjson.com/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => setItem(data));
-  }, [id]);
+  if (error) return <p>Error al cargar el producto 😿</p>;
 
-  return <ItemDetail item={item} />;
+  return <Loader loading={loading} render={() => <ItemDetail item={item} />} />;
 }
 
 export default ItemDetailContainer;

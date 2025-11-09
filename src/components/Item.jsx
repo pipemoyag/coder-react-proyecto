@@ -7,12 +7,11 @@ function Item({ item }) {
       <div className="card text-center h-100 d-flex flex-column justify-content-center align-items-center">
         <img src={item.thumbnail} className="card-img-top" alt="Producto"></img>
         <div className="card-body">
-          <h5 className="card-title">{item.title}</h5>
-          <p className="card-text">{item.description}</p>
-          <p className="fw-bold">${item.price}</p>
+          <h5 className="card-title fs-5">{item.title}</h5>
+          <p className="fw-bold fs-6">${item.price}</p>
           <button
             className="btn btn-primary"
-            onClick={() => navigate(`/coder-react-ejclases/item/${item.id}`)}
+            onClick={() => navigate(`/product/${item.id}`)}
           >
             Ver más
           </button>
