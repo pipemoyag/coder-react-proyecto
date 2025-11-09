@@ -42,15 +42,14 @@ const NavBar = ({ categories }) => {
               </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
+              <button
+                className="nav-link dropdown-toggle bg-transparent border-0"
+                type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Categorías
-              </a>
+              </button>
               <ul className="dropdown-menu mega-menu">
                 {categories.map((category, index) => (
                   <li key={index} className="list-unstyled">
