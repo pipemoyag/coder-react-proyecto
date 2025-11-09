@@ -12,7 +12,12 @@ function ItemListContainer({}) {
   const { data, loading, error } = useFetch(url, []); // traemos los datos
   const items = data.products || []; // API devuelve un objeto donde products es una propiedad
 
-  if (error) return <p>Error al cargar productos 😿</p>;
+  if (error)
+    return (
+      <p className="text-danger text-center my-3">
+        Error al cargar productos 😿
+      </p>
+    );
 
   return <Loader loading={loading} render={() => <ItemList items={items} />} />;
 }

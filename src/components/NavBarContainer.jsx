@@ -1,16 +1,25 @@
-import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
+import { useFetch } from "../hooks/useFetch";
 
 function NavBarContainer() {
-  const [categories, setCategories] = useState([]);
+  const {
+    data: categories,
+    loading,
+    error,
+  } = useFetch("https://dummyjson.com/products/category-list");
 
-  useEffect(() => {
-    fetch("https://dummyjson.com/products/category-list")
-      .then((res) => res.json())
-      .then((data) => setCategories(data));
-  }, []);
+  if (error) {
+    return (
+      <>
+        <NavBar categories={[]} />
+        <p className="text-danger text-center my-3">
+          Error al cargar categorías 😿
+        </p>
+      </>
+    );
+  }
 
-  return <NavBar categories={categories} />;
+  return <NavBar categories={categories || []} />;
 }
 
 export default NavBarContainer;

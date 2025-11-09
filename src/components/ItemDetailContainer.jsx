@@ -16,7 +16,12 @@ function ItemDetailContainer() {
     price: "",
   });
 
-  if (error) return <p>Error al cargar el producto 😿</p>;
+  if (error)
+    return (
+      <p className="text-danger text-center my-3">
+        Error al cargar el producto 😿
+      </p>
+    );
 
   return <Loader loading={loading} render={() => <ItemDetail item={item} />} />;
 }
