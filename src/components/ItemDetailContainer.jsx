@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
+import { useFetch } from "../hooks/useFetch";
 import ItemDetail from "./ItemDetail";
 import Loader from "./Loader";
-import { useFetch } from "../hooks/useFetch";
 
 function ItemDetailContainer() {
   const { id } = useParams();

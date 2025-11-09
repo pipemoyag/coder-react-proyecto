@@ -1,5 +1,5 @@
-import NavBar from "./NavBar";
 import { useFetch } from "../hooks/useFetch";
+import NavBar from "./NavBar";
 
 function NavBarContainer() {
   const {

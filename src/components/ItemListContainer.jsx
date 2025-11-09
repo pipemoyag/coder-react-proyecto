@@ -1,7 +1,7 @@
-import ItemList from "./ItemList";
-import Loader from "./Loader";
 import { useParams } from "react-router";
 import { useFetch } from "../hooks/useFetch";
+import ItemList from "./ItemList";
+import Loader from "./Loader";
 
 function ItemListContainer({}) {
   const { categoryName } = useParams(); // si estamos en ruta raíz, el categoryName es undefined
