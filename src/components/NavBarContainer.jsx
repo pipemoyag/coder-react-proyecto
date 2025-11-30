@@ -1,4 +1,5 @@
-import { useFetch } from "../hooks/useFetch";
+import { useAsync } from "../hooks/useAsync";
+import { getCategories } from "../firebase/db";
 import NavBar from "./NavBar";
 
 function NavBarContainer() {
@@ -6,7 +7,7 @@ function NavBarContainer() {
     data: categories,
     loading,
     error,
-  } = useFetch("https://dummyjson.com/products/category-list");
+  } = useAsync(() => getCategories(), [], []);
 
   if (error) {
     return (
@@ -19,7 +20,7 @@ function NavBarContainer() {
     );
   }
 
-  return <NavBar categories={categories || []} />;
+  return <NavBar categories={categories} />;
 }
 
 export default NavBarContainer;

@@ -18,14 +18,12 @@ function ItemDetail({ item }) {
         <div className="col-md-7">
           <h2 className="fw-bold mb-3 fs-3">{item.title}</h2>
           <p className="text-muted mb-4">{item.description}</p>
-          <h4 className="text-primary mb-4">${item.price}</h4>
+          <h4 className="text-primary mb-4">
+            ${item.price.toLocaleString("es-CL")}
+          </h4>
 
           {/* Contador simple */}
-          <ItemCount stock={item?.stock}></ItemCount>
-
-          <button className="btn btn-primary px-3 py-2">
-            Agregar al carrito
-          </button>
+          <ItemCount item={item}></ItemCount>
         </div>
       </div>
     </div>

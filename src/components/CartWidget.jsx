@@ -1,11 +1,14 @@
 import { Link } from "react-router";
+import { useCart } from "../context/useCart";
 
-const CartWidget = ({ cartCount }) => {
+const CartWidget = () => {
+  const { getCartQuantity } = useCart();
+  const quantity = getCartQuantity();
   return (
-    <Link to="/" className="btn btn-outline-light position-relative">
+    <Link to="/cart" className="btn btn-outline-light position-relative">
       <i className="bi bi-cart"></i>
       <span className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
-        {cartCount}
+        {quantity}
       </span>
     </Link>
   );

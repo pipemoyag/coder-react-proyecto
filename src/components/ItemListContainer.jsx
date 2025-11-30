@@ -1,16 +1,21 @@
 import { useParams } from "react-router";
-import { useFetch } from "../hooks/useFetch";
-import ItemList from "./ItemList";
+import { useAsync } from "../hooks/useAsync";
+import { getProducts, getProductByCategory } from "../firebase/db";
 import Loader from "./Loader";
+import ItemList from "./ItemList";
 
-function ItemListContainer({}) {
-  const { categoryName } = useParams(); // si estamos en ruta raíz, el categoryName es undefined
-  const url = categoryName
-    ? `https://dummyjson.com/products/category/${categoryName}`
-    : "https://dummyjson.com/products";
+function ItemListContainer() {
+  const { categoryName } = useParams();
 
-  const { data, loading, error } = useFetch(url, []); // traemos los datos
-  const items = data.products || []; // API devuelve un objeto donde products es una propiedad
+  const {
+    data: items,
+    loading,
+    error,
+  } = useAsync(
+    () => (categoryName ? getProductByCategory(categoryName) : getProducts()),
+    [categoryName], // dependencias
+    [] // initialData
+  );
 
   if (error)
     return (

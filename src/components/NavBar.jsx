@@ -27,7 +27,7 @@ const NavBar = ({ categories }) => {
           </button>
 
           {/* <!-- Carrito vista mobile --> */}
-          <CartWidget cartCount={1} />
+          <CartWidget />
         </div>
 
         {/* <!-- Contenido colapsable --> */}
@@ -66,7 +66,7 @@ const NavBar = ({ categories }) => {
 
             {/* <!-- Carrito vista desktop --> */}
             <li className="nav-item ms-3 d-none d-sm-block">
-              <CartWidget cartCount={1} />
+              <CartWidget />
             </li>
           </ul>
         </div>

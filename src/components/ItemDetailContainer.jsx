@@ -1,7 +1,8 @@
 import { useParams } from "react-router";
-import { useFetch } from "../hooks/useFetch";
+import { useAsync } from "../hooks/useAsync";
 import ItemDetail from "./ItemDetail";
 import Loader from "./Loader";
+import { getProduct } from "../firebase/db";
 
 function ItemDetailContainer() {
   const { id } = useParams();
@@ -10,11 +11,11 @@ function ItemDetailContainer() {
     data: item,
     loading,
     error,
-  } = useFetch(`https://dummyjson.com/products/${id}`, {
-    title: "",
-    description: "",
-    price: "",
-  });
+  } = useAsync(
+    () => getProduct(id),
+    [id], // dependencias
+    { title: "", description: "", price: "" } // initialData
+  );
 
   if (error)
     return (
