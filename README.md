@@ -134,4 +134,4 @@ Basadas en el archivo `package.json`:
 Este proyecto representa un paso importante en mi camino como desarrollador web, integrando herramientas modernas del ecosistema React y aplicándolas en una temática cercana y significativa para mí.
 
 ¡Gracias por revisar este proyecto!  
-Si deseas sugerencias para mejorarlo o extenderlo, estaré encantado de recibir feedback.
+Si deseas sugerencias para mejorarlo o extenderlo, estaré encantado de recibir feedback: **fmoyagallo@gmail.com**.
