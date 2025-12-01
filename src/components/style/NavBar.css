@@ -13,7 +13,7 @@
     max-width: 1000px;
     display: grid !important;
 
-    /* 💡 Grid adaptable */
+    /* grid adaptable */
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 0.75rem;
 
@@ -26,6 +26,8 @@
   }
 
   .mega-menu .dropdown-item {
+    white-space: normal !important;
+    overflow-wrap: break-word;
     color: #1a2f33;
     transition: background-color 0.2s ease;
   }

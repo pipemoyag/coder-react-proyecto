@@ -1,7 +1,24 @@
 import { Link } from "react-router";
 import "./style/Item.css";
+import Swal from "sweetalert2";
 
 const CartView = ({ cart, total, onClear, onRemove, onUpdate }) => {
+  const clearCart = () => {
+    Swal.fire({
+      title: "¿Vaciar el carrito?",
+      text: "Esta acción no se puede deshacer.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, vaciar",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        onClear();
+        Swal.fire("Carrito vacío", "", "success");
+      }
+    });
+  };
+
   return (
     <div className="container my-5">
       <h2 className="mb-4">Carrito de Compras</h2>
@@ -114,7 +131,7 @@ const CartView = ({ cart, total, onClear, onRemove, onUpdate }) => {
 
                 <button
                   className="btn btn-outline-danger w-100"
-                  onClick={onClear}
+                  onClick={clearCart}
                 >
                   Vaciar Carrito
                 </button>

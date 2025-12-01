@@ -1,8 +1,18 @@
 import { CartContext } from "./CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function CartProvider({ children }) {
-  const [cart, setCart] = useState({});
+  // inicializar desde localStorage,
+  // cuando valor inicial de useState es función flecha, se asigna el return de esa funcion solo cuando se monta el componente
+  const [cart, setCart] = useState(() => {
+    const saved = localStorage.getItem("cart");
+    return saved ? JSON.parse(saved) : {};
+  });
+
+  // guardar en localStorage cuando cambie el cart
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product, quantity) => {
     setCart((prevCart) => {

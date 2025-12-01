@@ -1,12 +1,21 @@
 import { serverTimestamp } from "firebase/firestore";
 import { useCart } from "../context/useCart";
 import { createOrder } from "../firebase/db";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const Checkout = () => {
-  const { getTotalPrice, cart } = useCart();
+  const { getTotalPrice, cart, clearCart } = useCart();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault(); // prevenir comportamiento por defecto, para que no se recargue la página
+    setError(""); // limpiar error previo
+    setLoading(true); // activar loader
 
     const form = e.target;
     const email = form.email.value;
@@ -20,7 +29,23 @@ const Checkout = () => {
       date: serverTimestamp(),
     };
 
-    createOrder(order);
+    try {
+      const orderId = await createOrder(order);
+
+      Swal.fire({
+        title: "Compra realizada",
+        text: `¡Gracias por tu compra ${nombre}! Tu código de orden es ${orderId}`,
+        icon: "success",
+        confirmButtonText: "OK",
+      }).then(() => navigate("/"));
+
+      clearCart();
+    } catch (e) {
+      console.error(e);
+      setError("No se pudo crear la orden. Intenta nuevamente.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -76,10 +101,18 @@ const Checkout = () => {
             />
           </div>
 
-          {/* Botón */}
-          <button type="submit" className="btn btn-primary w-100">
-            Finalizar compra
-          </button>
+          {/* Loader, Error o Botón */}
+          {loading ? (
+            <div className="d-flex justify-content-center py-2">
+              <div className="spinner-border" role="status"></div>
+            </div>
+          ) : error ? (
+            <div className="alert alert-danger text-center">{error}</div>
+          ) : (
+            <button type="submit" className="btn btn-primary w-100">
+              Finalizar compra
+            </button>
+          )}
         </form>
       </div>
     </div>

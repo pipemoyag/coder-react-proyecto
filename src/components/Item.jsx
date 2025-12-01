@@ -24,7 +24,6 @@ function Item({ item }) {
           <span className="item-badge">{quantityInCart}</span>
         )}
 
-        {/* Imagen clickable */}
         <Link to={`/product/${item.id}`} className="w-100">
           <div className="image-container d-flex justify-content-center align-items-center">
             <img
@@ -37,7 +36,6 @@ function Item({ item }) {
         </Link>
 
         <div className="card-body">
-          {/* Título clickable */}
           <Link
             to={`/product/${item.id}`}
             className="text-dark hover-underline"
@@ -49,7 +47,6 @@ function Item({ item }) {
 
           <p className="fs-6">${item.price.toLocaleString("es-CL")}</p>
 
-          {/* Botón agregar */}
           <button
             className="btn btn-primary"
             onClick={handleAddOne}
