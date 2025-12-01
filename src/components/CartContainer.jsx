@@ -1,4 +1,3 @@
-// src/containers/CartContainer.jsx
 import { useCart } from "../context/useCart";
 import Cart from "./Cart";
 
